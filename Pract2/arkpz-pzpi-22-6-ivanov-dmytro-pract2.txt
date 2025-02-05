@@ -1,0 +1,156 @@
+﻿Методи
+рефакторингу коду програмного
+забезпечення	Р О Б О Т У	В И К О Н А В : С Т У Д Е Н Т	3 К У Р С У
+Ф А К У Л Ь Т Е Т У
+« К О М П ’ Ю Т Е Р Н І	Н А У К И »
+Г Р У П И	П З П І - 22 - 6
+І В А Н О В	Д . С .
+
+Мета роботи
+
+
+
+Ознайомлення з методами рефакторингу коду на основі книги "Чистий код" Роберта Мартіна.
+Демонстрація використання методів рефакторингу на реальних прикладах коду.
+
+
+
+
+
+
+
+
+
+
+
+
+Що таке рефакторинг
+?
+
+
+
+
+
+Метод 1 – Convert Procedural Design to Objects
+
+
+
+
+
+
+
+
+
+
+
+Приклад до рефакторингу:
+
+# Процедурний підхід
+balance = 1000
+def deposit(amount): global balance balance += amount
+
+def withdraw(amount): global balance balance -= amount
+
+
+
+Після рефакторингу:
+
+# Об'єктно-орієнтований підхід
+class BankAccount:
+def 	init	(self, balance=0):
+ self.balance = balance def deposit(self, amount): self.balance += amount
+def withdraw(self, amount): self.balance -= amount
+
+
+
+Метод 2 – Encapsulate Downcast
+
+
+
+
+
+
+
+Приклад до рефакторингу:
+
+Object obj = getObject(); if (obj instanceof String) { String str = (String) obj;
+System.out.println(str.toUpperCase());
+}
+
+class DataProcessor {
+private Object data;
+
+
+Після рефакторингу:public DataProcessor(Object data) {
+this.data = data;
+}
+
+
+public String getStringData() {
+if (data instanceof String) { return (String) data;
+}
+return "";
+}}
+
+
+
+Метод 3 – Form Template Method
+
+class PDFReport {
+public void Generate() {
+
+Console.WriteLine("Формування PDF
+Приклад до рефакторингуз:віту");
+}
+}
+
+
+class ExcelReport {
+public void Generate() {
+    Console.WriteLine("Формування Excel звіту");
+}
+}
+
+abstract class Report {
+public void Generate() {	Console.WriteLine("Формування
+звіту");
+
+Export();
+
+Після рефакторингу:
+}
+
+}
+protected abstract void Export();
+
+
+
+class PDFReport : Report {
+protected override void Export() {
+Console.WriteLine("Експорт у PDF");
+}
+}
+
+
+class ExcelReport : Report { protected override void Export() {
+Console.WriteLine("Експорт у Excel");
+}
+
+
+
+: Переваги рефакторинг у
+
+
+
+
+
+
+
+
+
+
+
+
+Висновки
+
+Методи рефакторингу дозволяють покращити якість програмного коду, спрощують його розуміння та підтримку. Використання об'єктно-орієнтованого підходу, інкапсуляції та шаблонних методів сприяє гнучкості та ефективності програмування
